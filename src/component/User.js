@@ -7,6 +7,7 @@ import { profileAction } from './store/profile';
 
 function User(props) {
     const dispatch = useDispatch();
+    
     const mouseEnterHandler = (e) => {
         e.preventDefault();
         dispatch(profileAction.showProfile());
