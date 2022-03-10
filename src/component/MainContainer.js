@@ -5,6 +5,7 @@ import User from './User';
 import UserProfile from './UserProfile'
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
+import ReactDOMServer from 'react-dom/server';
 
 function MainContainer() {
     const profileVisibility = useSelector(state => state.profile.IsMouseEntred);
@@ -34,17 +35,17 @@ function MainContainer() {
 
     const page1 = () => {
         setIsLoading(true);
-        callApi('https://reqres.in/api/users?page=1');
+        callApi(process.env.REACT_APP_API_PRODUCTION);
         setIsLoading(false);
     }
 
     const page2 = () => {
-        callApi('https://reqres.in/api/users?page=2');
+        callApi(process.env.REACT_APP_API_PRODUCTION_VAR);
         setIsLoading(false);
     }
 
     useEffect(() => {
-        callApi('https://reqres.in/api/users?page=1');
+        callApi(process.env.REACT_APP_API_PRODUCTION);
         setIsLoading(false);
     }, []);
 
@@ -85,8 +86,11 @@ function MainContainer() {
                 </div>
                 <div className='User_Profile'>
                     {profileVisibility && <UserProfile data={profile} />}
+                    
+
                 </div>
             </div>
+            ReactDOMServer
         </React.Fragment>
     )
 }
