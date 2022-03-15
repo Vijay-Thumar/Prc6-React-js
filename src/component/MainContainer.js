@@ -61,6 +61,7 @@ function MainContainer() {
                     <HeaderUser />
 
                     {!isLoading && <span>Loading...</span>}
+                    {console.log('value: ' +isLoading)}
                     {isLoading &&
                         userList.map((user) => {
                             return <User onHover={mouseEnterHandler}
@@ -90,7 +91,6 @@ function MainContainer() {
 
                 </div>
             </div>
-            ReactDOMServer
         </React.Fragment>
     )
 }
